@@ -9,9 +9,9 @@ fetch(api())
     console.log(data);
     document.getElementById("ville").innerHTML = "Ville : " + data.city.name;
     document.getElementById("meteo-min").innerHTML =
-      "Température minimal : " + JSON.stringify(data.forecast.tmin) + "°C";
-    document.getElementById("meteo-max").innerHTML =
-      "Température maximal : " + JSON.stringify(data.forecast.tmax) + "°C";
+      "Température ambiante : " +
+      JSON.stringify(data.forecast[0].temp2m) +
+      "°C";
   })
   .catch((error) => alert("Erreur : " + error));
 
