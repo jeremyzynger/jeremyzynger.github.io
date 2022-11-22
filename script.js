@@ -19,11 +19,9 @@ function runClock() {
   var today = new Date();
   var hours = today.getHours();
   var minutes = today.getMinutes();
-  var seconds = today.getSeconds();
   var timeValue = hours;
 
   timeValue += (minutes < 10 ? ":0" : ":") + minutes;
-  timeValue += (seconds < 10 ? ":0" : ":") + seconds;
   document.getElementById("heure").innerHTML = timeValue;
   console.log(timeValue);
 }
