@@ -3,6 +3,7 @@
     color: blueviolet;
 }
 
+
 * {
     margin: 0;
     padding: 0;
@@ -40,11 +41,11 @@
     bottom: 0;
     left: 0;
   }
-.sun {
+#sun {
     height: 80px;
     width: 80px;
     position: absolute;
-    top:50%;
+    top:15%;
     left:30%;
     transform: translateX(-50%);
     border-radius: 50%;
@@ -54,11 +55,11 @@
     z-index : 2;
     /* animation: anime1 5s linear forwards; */
 }
-@keyframes rotate {
+/* @keyframes rotate {
     100%{
         transform: rotateZ(180deg);
-    }
-}
+    } 
+ } */
 .sun-container {
     animation: rotate 10s infinite linear;
   }

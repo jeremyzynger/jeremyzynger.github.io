@@ -15,9 +15,11 @@ fetch(api())
   })
   .catch((error) => alert("Erreur : " + error));
 
+let hours = 0;
+
 function runClock() {
   var today = new Date();
-  var hours = today.getHours();
+  hours = today.getHours();
   var minutes = today.getMinutes();
   var timeValue = hours;
 
@@ -25,5 +27,11 @@ function runClock() {
   document.getElementById("heure").innerHTML = timeValue;
   console.log(timeValue);
 }
+
 runClock();
 setInterval(runClock, 1000);
+
+if (hours >= 12) {
+  console.log("lol");
+  document.getElementById("sun").style.top = "-30%";
+}
