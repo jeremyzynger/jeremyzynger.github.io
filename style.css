@@ -3,61 +3,115 @@
     color: blueviolet;
 }
 
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background: #9794E1;
+}
+.mountain {
+    position: absolute;
+    bottom: 0px;
+    height: 70%;
+    width: 100%;
+    z-index: 3;
+    /* height: 100vh;
+    width: 100vw; */
+}
+.mountain2 {
+    position: absolute;
+    bottom: 0px;
+    height: 70%;
+    width: 100%;
+    z-index: 3;
+    /* position: fixed;
+    height: 100vh;
+    width: 100vw; */
+}
+.sun-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+.sun {
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    top:50%;
+    left:30%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: rgb(255,255,0);
+    box-shadow: 0px 0px 50px rgb(255,255,0),
+    0px 0px 50px rgb(255,255,0);
+    z-index : 2;
+    /* animation: anime1 5s linear forwards; */
+}
+@keyframes rotate {
+    100%{
+        transform: rotateZ(180deg);
     }
-    .container {
-        height: 100vh;
-        width: 100vw;
-        position: fixed;
-        background: #85C1E9;
+}
+.sun-container {
+    animation: rotate 10s infinite linear;
+  }
+/* @keyframes anime1 {
+    0%{
+        top: 50%;
+        box-shadow: 0px 0px 15px rgb(243,156,18),
+    0px 0px 15px rgb(243,156,18);
+    background: rgb(243,156,18);
     }
-    .sun {
-        height: 80px;
-        width: 80px;
-        position: absolute;
-        top:8%;
-        left:50%;
-        transform: translateX(-50%);
-        border-radius: 50%;
-        background: rgb(255,255,0);
-        box-shadow: 0px 0px 50px rgb(255,255,0),
-        0px 0px 50px rgb(255,255,0);
-        z-index : 2;
-        animation: anime1 10s linear forwards;
+    100%{
+       top: 8%;
+       background: rgb(255,255,0);
+       box-shadow: 0px 0px 50px rgb(255,255,0),
+       0px 0px 50px rgb(255,255,0);
     }
-    @keyframes anime1 {
-        0%{
-            top: 50%;
-            box-shadow: 0px 0px 15px rgb(243,156,18),
-        0px 0px 15px rgb(243,156,18);
-        background: rgb(243,156,18);
-        }
-        100%{
-           top: 8%;
-           background: rgb(255,255,0);
-           box-shadow: 0px 0px 50px rgb(255,255,0),
-           0px 0px 50px rgb(255,255,0);
-        }
+}   */
+.dark{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+    background: rgba(0,0,0,0.7);
+    animation: anime2 10s linear forwards;
+}
+@keyframes anime2 {
+    0%{
+    background: rgba(0,0,0,0.7);
     }
-    .dark{
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        height: 100%;
-        width: 100%;
-        z-index: 5;
-        background: rgba(0,0,0,0.7);
-        animation: anime2 10s linear forwards;
+    100%{
+       background: rgba(0,0,0,0);
     }
-    @keyframes anime2 {
-        0%{
-        background: rgba(0,0,0,0.7);
-        }
-        100%{
-           background: rgba(0,0,0,0);
-        }
+}
+.birds{
+    position: absolute;
+    left: -15%;
+    top: 20px;
+    height: 70px;
+    width: 140px ;
+    animation: anime3 10s linear forwards;
+}
+@keyframes anime3 {
+    0%{
+        left: -15%;
+        top: 20%;
     }
+    35%{
+        top: 40%;
+    }
+    100%{
+        left: 120%;
+        top: 20%;
+    }
+}
