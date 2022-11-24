@@ -34,6 +34,7 @@
     height: 100vh;
     width: 100vw; */
 }
+
 /* .sun-container {
     position: absolute;
     top: 0;
@@ -115,4 +116,24 @@
         left: 120%;
         top: 20%;
     }
+}
+
+.nuit {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background: #0F083C;
+}
+#lune {
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    top:70%;
+    left:50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: rgb(254, 254, 254);
+    box-shadow: 0px 0px 50px rgb(255, 255, 255),
+    0px 0px 50px rgb(255, 255, 255);
+    z-index : 2;
 }
