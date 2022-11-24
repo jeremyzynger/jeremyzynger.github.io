@@ -34,19 +34,19 @@
     height: 100vh;
     width: 100vw; */
 }
-.sun-container {
+/* .sun-container {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-  }
+  } */
 #sun {
     height: 80px;
     width: 80px;
     position: absolute;
-    top:15%;
-    left:30%;
+    top:70%;
+    left:50%;
     transform: translateX(-50%);
     border-radius: 50%;
     background: rgb(255,255,0);
@@ -60,9 +60,9 @@
         transform: rotateZ(180deg);
     } 
  } */
-.sun-container {
+/* .sun-container {
     animation: rotate 10s infinite linear;
-  }
+  } */
 /* @keyframes anime1 {
     0%{
         top: 50%;
