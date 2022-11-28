@@ -12,10 +12,12 @@ fetch(api())
       "Température ambiante : " +
       JSON.stringify(data.forecast[0].temp2m) +
       "°C";
+    document.getElementById("rain").innerHTML =
+      "Probabilité de pluie : " +
+      JSON.stringify(data.forecast[0].probarain) +
+      "%";
   })
   .catch((error) => alert("Erreur : " + error));
-
-let hours = 0;
 
 function runClock() {
   var today = new Date();
@@ -53,6 +55,8 @@ setInterval(runClock, 1000);
 //     ? (document.getElementById("sun").style.top = "10%")
 //     : (document.getElementById("sun").style.top = "70%");
 
+// let hours = 19;
+
 function mvtSun(x) {
   if (x > 6 && x < 18) {
     a = Math.abs(x - 12) * (60 / 6) + 10;
@@ -65,7 +69,7 @@ function mvtMoon(x) {
   if (x < 6) {
     a = x * 10 + 10;
     document.getElementById("lune").style.top = `${a}%`;
-  } else if (x >= 22) {
+  } else if (x >= 20) {
     b = 24 - x + 10;
     document.getElementById("lune").style.top = `${b}%`;
   } else {
@@ -75,3 +79,13 @@ function mvtMoon(x) {
 
 setInterval(mvtSun(hours), 1000);
 setInterval(mvtMoon(hours), 1000);
+
+function changeToNuit(x) {
+  if (x < 6 || x > 18) {
+    document.getElementById("nuit").style.background = "rgb(15, 8, 60, 0.9)";
+  } else if (x == 18 || x == 17) {
+    document.getElementById("nuit").style.background = "rgb(15, 8, 60, 0.5)";
+  }
+}
+
+changeToNuit(hours);

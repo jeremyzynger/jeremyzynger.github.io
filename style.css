@@ -13,7 +13,7 @@
     height: 100vh;
     width: 100vw;
     position: fixed;
-    background: #9794E1;
+    background: rgb(148, 157, 225,1);
 }
 .mountain {
     position: absolute;
@@ -78,7 +78,7 @@
        0px 0px 50px rgb(255,255,0);
     }
 }   */
-.dark{
+/* .dark{
     position: absolute;
     left: 0px;
     top: 0px;
@@ -95,7 +95,7 @@
     100%{
        background: rgba(0,0,0,0);
     }
-}
+} */
 .birds{
     position: absolute;
     left: -15%;
@@ -118,11 +118,11 @@
     }
 }
 
-.nuit {
+#nuit {
     height: 100vh;
     width: 100vw;
     position: fixed;
-    background: #0F083C;
+    background: rgb(15,8,60,0);
 }
 #lune {
     height: 80px;
