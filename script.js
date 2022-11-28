@@ -8,54 +8,32 @@ fetch(api())
   .then((data) => {
     console.log(data);
     document.getElementById("ville").innerHTML = "Ville : " + data.city.name;
-    document.getElementById("meteo-min").innerHTML =
+    document.getElementById("meteo").innerHTML =
       "Température ambiante : " +
       JSON.stringify(data.forecast[0].temp2m) +
       "°C";
     document.getElementById("rain").innerHTML =
-      "Probabilité de pluie : " +
-      JSON.stringify(data.forecast[0].probarain) +
-      "%";
+      "Probabilité de pluie : " + data.forecast[0].probarain + "%";
+    setCloudy(data.forecast[0].probarain);
+    setRain(data.forecast[0].probarain);
   })
   .catch((error) => alert("Erreur : " + error));
 
-function runClock() {
-  var today = new Date();
-  hours = today.getHours();
-  var minutes = today.getMinutes();
-  var timeValue = hours;
+// function runClock() {
+//   var today = new Date();
+//   hours = today.getHours();
+//   var minutes = today.getMinutes();
+//   var timeValue = hours;
 
-  timeValue += (minutes < 10 ? ":0" : ":") + minutes;
-  document.getElementById("heure").innerHTML = timeValue;
-  console.log(timeValue);
-}
-
-runClock();
-setInterval(runClock, 1000);
-
-// if (hours <= 12) {
-//   console.log("lol");
-//   document.getElementById("sun").style.top = "-30%";
+//   timeValue += (minutes < 10 ? ":0" : ":") + minutes;
+//   document.getElementById("heure").innerHTML = timeValue;
+//   console.log(timeValue);
 // }
 
-// const nuit =
-//   hours <= 6 || hours >= 18
-//     ?  )
-//     : hours == 7
-//     ? (document.getElementById("sun").style.top = "60%")
-//     : hours == 8
-//     ? (document.getElementById("sun").style.top = "50%")
-//     : hours == 9
-//     ? (document.getElementById("sun").style.top = "40%")
-//     : hours == 10
-//     ? (document.getElementById("sun").style.top = "30%")
-//     : hours == 11
-//     ? (document.getElementById("sun").style.top = "20%")
-//     : hours == 12
-//     ? (document.getElementById("sun").style.top = "10%")
-//     : (document.getElementById("sun").style.top = "70%");
+// runClock();
+// setInterval(runClock, 1000);
 
-// let hours = 19;
+let hours = 3;
 
 function mvtSun(x) {
   if (x > 6 && x < 18) {
@@ -89,3 +67,23 @@ function changeToNuit(x) {
 }
 
 changeToNuit(hours);
+
+function setCloudy(x) {
+  if (parseInt(x) >= 20) {
+    document.getElementById("nuage").style.opacity = "1";
+    document.getElementById("sun").style.top = "-30%";
+    document.getElementById("lune").style.top = "-30%";
+    // document.getElementById("nuit").style.background = "rgb(15, 8, 60, 0.3)";
+  }
+}
+
+function setRain(x) {
+  if (parseInt(x) >= 50) {
+    document.getElementById("nuage").style.opacity = "1";
+    document.getElementById("pluie").style.opacity = "1";
+    document.getElementById("sun").style.top = "-30%";
+    document.getElementById("lune").style.top = "-30%";
+
+    // document.getElementById("nuit").style.background = "rgb(15, 8, 60, 0.3)";
+  }
+}
