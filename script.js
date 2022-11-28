@@ -14,8 +14,10 @@ fetch(api())
       "°C";
     document.getElementById("rain").innerHTML =
       "Probabilité de pluie : " + data.forecast[0].probarain + "%";
+
     setCloudy(data.forecast[0].probarain);
     setRain(data.forecast[0].probarain);
+    setSun(data.forecast[0].probarain);
   })
   .catch((error) => alert("Erreur : " + error));
 
@@ -33,7 +35,7 @@ fetch(api())
 // runClock();
 // setInterval(runClock, 1000);
 
-let hours = 3;
+let hours = 12;
 
 function mvtSun(x) {
   if (x > 6 && x < 18) {
@@ -48,7 +50,7 @@ function mvtMoon(x) {
     a = x * 10 + 10;
     document.getElementById("lune").style.top = `${a}%`;
   } else if (x >= 20) {
-    b = 24 - x + 10;
+    b = (24 - x) * 10 + 10;
     document.getElementById("lune").style.top = `${b}%`;
   } else {
     document.getElementById("lune").style.top = "-30%";
@@ -65,7 +67,6 @@ function changeToNuit(x) {
     document.getElementById("nuit").style.background = "rgb(15, 8, 60, 0.5)";
   }
 }
-
 changeToNuit(hours);
 
 function setCloudy(x) {
@@ -73,7 +74,7 @@ function setCloudy(x) {
     document.getElementById("nuage").style.opacity = "1";
     document.getElementById("sun").style.top = "-30%";
     document.getElementById("lune").style.top = "-30%";
-    // document.getElementById("nuit").style.background = "rgb(15, 8, 60, 0.3)";
+    document.getElementById("status").innerHTML = "Nuageux";
   }
 }
 
@@ -83,7 +84,12 @@ function setRain(x) {
     document.getElementById("pluie").style.opacity = "1";
     document.getElementById("sun").style.top = "-30%";
     document.getElementById("lune").style.top = "-30%";
-
-    // document.getElementById("nuit").style.background = "rgb(15, 8, 60, 0.3)";
+    document.getElementById("dark").style.background = "rgb(15, 8, 60, 0.5)";
+    document.getElementById("status").innerHTML = "Pluvieux";
+  }
+}
+function setSun(x) {
+  if (parseInt(x) >= 10) {
+    document.getElementById("status").innerHTML = "Ensoleillé";
   }
 }
