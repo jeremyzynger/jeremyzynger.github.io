@@ -1,7 +1,7 @@
-#meteo-min, #meteo-max {
+/* #meteo-min, #meteo-max {
     font-size: large;
     color: blueviolet;
-}
+} */
 
 
 * {
@@ -9,11 +9,12 @@
     padding: 0;
     box-sizing: border-box;
 }
-.container {
+
+#background {
     height: 100vh;
     width: 100vw;
-    position: fixed;
-    background: rgb(148, 157, 225,1);
+    position: relative;
+    /* background: rgb(148, 157, 225,1); */
 }
 .mountain {
     position: absolute;
@@ -21,8 +22,7 @@
     height: 70%;
     width: 100%;
     z-index: 3;
-    /* height: 100vh;
-    width: 100vw; */
+
 }
 .mountain2 {
     position: absolute;
@@ -30,18 +30,16 @@
     height: 70%;
     width: 100%;
     z-index: 3;
-    /* position: fixed;
-    height: 100vh;
-    width: 100vw; */
+
 }
 
-/* .sun-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  } */
+#jour {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background: rgb(148, 157, 225,1);
+}
+
 #sun {
     height: 80px;
     width: 80px;
@@ -56,46 +54,7 @@
     z-index : 2;
     /* animation: anime1 5s linear forwards; */
 }
-/* @keyframes rotate {
-    100%{
-        transform: rotateZ(180deg);
-    } 
- } */
-/* .sun-container {
-    animation: rotate 10s infinite linear;
-  } */
-/* @keyframes anime1 {
-    0%{
-        top: 50%;
-        box-shadow: 0px 0px 15px rgb(243,156,18),
-    0px 0px 15px rgb(243,156,18);
-    background: rgb(243,156,18);
-    }
-    100%{
-       top: 8%;
-       background: rgb(255,255,0);
-       box-shadow: 0px 0px 50px rgb(255,255,0),
-       0px 0px 50px rgb(255,255,0);
-    }
-}   */
-/* .dark{
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    height: 100%;
-    width: 100%;
-    z-index: 5;
-    background: rgba(0,0,0,0.7);
-    animation: anime2 10s linear forwards;
-}
-@keyframes anime2 {
-    0%{
-    background: rgba(0,0,0,0.7);
-    }
-    100%{
-       background: rgba(0,0,0,0);
-    }
-} */
+
 .birds{
     position: absolute;
     left: -15%;
@@ -103,6 +62,7 @@
     height: 70px;
     width: 140px ;
     animation: anime3 30s infinite;
+    z-index: 4;
 }
 @keyframes anime3 {
     0%{
@@ -156,6 +116,7 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   opacity: 0;
+  z-index: 3;
 }
 
 /* .pluie-container {
@@ -178,4 +139,64 @@
     width: 100vw;
     position: fixed;
     background: rgb(58,58,71,0);
+}
+
+/* body {
+    background: rgb(19, 25, 70);
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: top center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-size: cover;
+}  */
+#text {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+}
+
+#ville {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: grey;
+    font-family: 'Fredoka One';
+    color: white;
+    padding: 0.4%;
+}
+
+#heure {
+    /* display: flex; */
+    align-items: center;
+    font-size: 100px;
+    padding-right: 2%;
+}
+
+#meteo {
+    padding-left: 5%;
+    font-size: 200px;
+}
+
+.meteoHeure {
+    display: flex;
+    color:wheat;
+    padding-top: 22%;
+    font-family: 'Poppins';
+    justify-content: space-between;
+}
+
+#container-ville {
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1;
+}
+
+.bouton:hover {
+   opacity: 0.5;
+}
+
+#g {
+    transform: rotate(-180deg);
 }

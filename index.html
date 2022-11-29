@@ -8,43 +8,57 @@
     <title>Document</title>
   </head>
   <body>
-    
-    
-    
-    <div class="container">
-    <h1>Meteo</h1>
-    <p id="ville"></p>
-    <p id="meteo"></p>
-    <p id="rain" ></p>
-    <p id="heure"></p>
-    <p id="status"></p>
-  
+    <div id="background">
+      <img src="birds.gif" class="birds" />
+      <img src="mountain.png" class="mountain" />
+      <img src="mountain2.png" class="mountain2" />
 
-    <img src= "birds.gif" class="birds"></div>
-    <img src= "mountain.png" class="mountain"></div>
-    <img src= "mountain2.png" class="mountain2"></div>
-
-
-    <div id="nuit">
-      <div id= "lune"> </div>
+      <div id="nuit">
+        <div id="lune"></div>
       </div>
 
+      <div id="jour">
+        <div id="sun"></div>
+        <div id="dark"></div>
+      </div>
 
-    <div class="sun-container">
+      <div class="nuage-container">
+        <img src="nuage.png" id="nuage" />
+      </div>
 
-     <div id="sun"> </div>
+      <div class="pluie-container">
+        <img src="pluie.gif" id="pluie" />
+      </div>
     </div>
-    <div id="dark"></div>
 
-    <div class="nuage-container">
-      <img src= "nuage.png" id="nuage"></div>
+    <div id="text">
+      <h1>Meteo</h1>
+      <p id="status"></p>
+      <p id="rain"></p>
+      <p id="ville"></p>
+
+      <div id="container-ville">
+        <img
+          src="./images/fleche.png"
+          onclick="changeSlide(-1)"
+          class="bouton"
+          id="g"
+          style="width: 10px"
+        />
+        <img
+          src="./images/fleche.png"
+          onclick="changeSlide(1)"
+          class="bouton"
+          id="d"
+          style="width: 10px"
+        />
+      </div>
+
+      <div class="meteoHeure">
+        <h1 id="meteo"></h1>
+        <p id="heure"></p>
+      </div>
     </div>
-  </div>
-  <div class="pluie-container">
-    <img src= "pluie.gif" id="pluie"></div>
-  </div>
-</div>
-
 
     <script src="configuration.js"></script>
     <script src="script.js"></script>
