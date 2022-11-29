@@ -10,39 +10,39 @@ fetch(api())
     document.getElementById("ville").innerHTML = "Ville : " + data.city.name;
     document.getElementById("meteo").innerHTML =
       "Température ambiante : " +
-      JSON.stringify(data.forecast[0].temp2m) +
+      JSON.stringify(data.forecast[0].tsoil1) +
       "°C";
     document.getElementById("rain").innerHTML =
       "Probabilité de pluie : " + data.forecast[0].probarain + "%";
 
-    setCloudy(data.forecast[0].probarain);
+    setCloud(data.forecast[0].probarain);
+    setHeavyCloud(data.forecast[0].probarain);
     setRain(data.forecast[0].probarain);
-    setSun(data.forecast[0].probarain);
   })
   .catch((error) => alert("Erreur : " + error));
 
-// function runClock() {
-//   var today = new Date();
-//   hours = today.getHours();
-//   var minutes = today.getMinutes();
-//   var timeValue = hours;
+function runClock() {
+  var today = new Date();
+  hours = today.getHours();
+  var minutes = today.getMinutes();
+  var timeValue = hours;
 
-//   timeValue += (minutes < 10 ? ":0" : ":") + minutes;
-//   document.getElementById("heure").innerHTML = timeValue;
-//   console.log(timeValue);
-// }
+  timeValue += (minutes < 10 ? ":0" : ":") + minutes;
+  document.getElementById("heure").innerHTML = timeValue;
+  console.log(timeValue);
+}
 
-// runClock();
-// setInterval(runClock, 1000);
-
-let hours = 12;
+runClock();
+setInterval(runClock, 1000);
 
 function mvtSun(x) {
   if (x > 6 && x < 18) {
     a = Math.abs(x - 12) * (60 / 6) + 10;
     document.getElementById("sun").style.top = `${a}%`;
+    document.getElementById("status").innerHTML = "Ensoleillé";
   } else {
     document.getElementById("sun").style.top = "-30%";
+    document.getElementById("status").innerHTML = "Nuit paisible";
   }
 }
 function mvtMoon(x) {
@@ -69,12 +69,20 @@ function changeToNuit(x) {
 }
 changeToNuit(hours);
 
-function setCloudy(x) {
-  if (parseInt(x) >= 20) {
+function setCloud(x) {
+  if (parseInt(x) >= 10) {
+    document.getElementById("nuage").style.opacity = "1";
+    document.getElementById("status").innerHTML = "Légèrement Nuageux";
+  }
+}
+function setHeavyCloud(x) {
+  if (parseInt(x) >= 30) {
     document.getElementById("nuage").style.opacity = "1";
     document.getElementById("sun").style.top = "-30%";
     document.getElementById("lune").style.top = "-30%";
-    document.getElementById("status").innerHTML = "Nuageux";
+    document.getElementById("dark").style.background = "rgb(15, 8, 60, 0.4)";
+    document.getElementById("nuage").style.width = "30vw";
+    document.getElementById("status").innerHTML = " Très Nuageux";
   }
 }
 
@@ -84,12 +92,8 @@ function setRain(x) {
     document.getElementById("pluie").style.opacity = "1";
     document.getElementById("sun").style.top = "-30%";
     document.getElementById("lune").style.top = "-30%";
+    document.getElementById("nuage").style.width = "30vw";
     document.getElementById("dark").style.background = "rgb(15, 8, 60, 0.5)";
     document.getElementById("status").innerHTML = "Pluvieux";
-  }
-}
-function setSun(x) {
-  if (parseInt(x) >= 10) {
-    document.getElementById("status").innerHTML = "Ensoleillé";
   }
 }
