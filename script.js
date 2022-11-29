@@ -36,9 +36,12 @@ function runClock() {
 let index = 0;
 let container = document.getElementById("container-ville");
 let p = document.createElement("p");
+let img = document.getElementById("d");
+let imgP = document.getElementById("d").parentNode
 p.id = "ville";
 p.innerHTML = tabVille[index].ville;
 container.appendChild(p);
+imgP.insertBefore(p,img)
 
 fetchApi(tabVille[index].code);
 
@@ -54,7 +57,8 @@ function changeSlide(sens) {
 
   fetchApi(tabVille[index].code);
   p.innerHTML = tabVille[index].ville;
-  return container.appendChild(p);
+  container.appendChild(p);
+  imgP.insertBefore(p,img)
 }
 
 runClock();
