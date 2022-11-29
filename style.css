@@ -158,13 +158,12 @@
 }
 
 #ville {
-    display: flex;
     justify-content: center;
     align-items: center;
     background: grey;
     font-family: 'Fredoka One';
     color: white;
-    padding: 0.4%;
+
 }
 
 #heure {

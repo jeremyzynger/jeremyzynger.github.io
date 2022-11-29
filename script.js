@@ -13,6 +13,7 @@ function fetchApi(codeInsee) {
       document.getElementById("rain").innerHTML =
         "Probabilité de pluie : " + data.forecast[0].probarain + "%";
 
+      setSol(hours);
       setCloud(data.forecast[0].probarain);
       setHeavyCloud(data.forecast[0].probarain);
       setRain(data.forecast[0].probarain);
@@ -63,16 +64,16 @@ let tabVille = [
   },
 ];
 
-function runClock() {
-  var today = new Date();
-  hours = today.getHours();
-  var minutes = today.getMinutes();
-  var timeValue = hours;
+// function runClock() {
+//   var today = new Date();
+//   hours = today.getHours();
+//   var minutes = today.getMinutes();
+//   var timeValue = hours;
 
-  timeValue += (minutes < 10 ? ":0" : ":") + minutes;
-  document.getElementById("heure").innerHTML = timeValue;
-  console.log(timeValue);
-}
+//   timeValue += (minutes < 10 ? ":0" : ":") + minutes;
+//   document.getElementById("heure").innerHTML = timeValue;
+//   console.log(timeValue);
+// }
 
 let index = 0;
 let container = document.getElementById("container-ville");
@@ -98,8 +99,10 @@ function changeSlide(sens) {
   return container.appendChild(p);
 }
 
-runClock();
-setInterval(runClock, 1000);
+// runClock();
+// setInterval(runClock, 1000);
+
+let hours = 12;
 
 function mvtSun(x) {
   if (x > 6 && x < 18) {
@@ -128,15 +131,15 @@ setInterval(mvtMoon(hours), 1000);
 
 function changeToNuit(x) {
   if (x < 6 || x > 18) {
-    document.getElementById("nuit").style.background = "rgb(15, 8, 60, 0.9)";
+    document.getElementById("jour").style.background = "rgb(15,8,60,0.9)";
   } else if (x == 18 || x == 17) {
-    document.getElementById("nuit").style.background = "rgb(15, 8, 60, 0.5)";
+    document.getElementById("jour").style.background = "rgba(79, 64, 173, 0.8)";
   }
 }
 changeToNuit(hours);
 
 function setCloud(x) {
-  if (parseInt(x) >= 10) {
+  if (parseInt(x) >= 20) {
     document.getElementById("nuage").style.opacity = "1";
     document.getElementById("status").innerHTML = "Légèrement Nuageux";
   }
@@ -162,4 +165,12 @@ function setRain(x) {
     document.getElementById("dark").style.background = "rgb(15, 8, 60, 0.5)";
     document.getElementById("status").innerHTML = "Pluvieux";
   }
+}
+
+function setSol(hours) {
+  setInterval(mvtSun(hours), 1000);
+  setInterval(mvtMoon(hours), 1000);
+  document.getElementById("nuage").style.width = "20vw";
+  document.getElementById("nuage").style.opacity = "0";
+  document.getElementById("pluie").style.opacity = "0";
 }
