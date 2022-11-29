@@ -1,17 +1,17 @@
 function fetchApi(codeInsee) {
   fetch(api(codeInsee))
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      document.getElementById("meteo").innerHTML =
-        Number(data.forecast[0].tsoil1) + "°C";
-      document.getElementById("rain").innerHTML =
-        "Probabilité de pluie : " + data.forecast[0].probarain + "%";
+  .then((response) => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+    document.getElementById("meteo").innerHTML =
+      Number(data.forecast[0].temp2m) + "°C";
+    document.getElementById("rain").innerHTML =
+      "Probabilité de pluie : " + data.forecast[0].probarain + "%";
 
       setSol(hours);
       setCloud(data.forecast[0].probarain);
@@ -21,59 +21,17 @@ function fetchApi(codeInsee) {
     .catch((error) => alert("Erreur : " + error));
 }
 
-let tabVille = [
-  {
-    ville: "PARIS",
-    code: "75056",
-  },
-  {
-    ville: "LYON",
-    code: "69123",
-  },
-  {
-    ville: "STRASBOURG",
-    code: "67482",
-  },
-  {
-    ville: "ROUEN",
-    code: "76540",
-  },
-  {
-    ville: "MARSEILLE",
-    code: "13055",
-  },
-  {
-    ville: "AJACCIO",
-    code: "2A004",
-  },
-  {
-    ville: "BREST",
-    code: "29019",
-  },
-  {
-    ville: "BIARRITZ",
-    code: "64122",
-  },
-  {
-    ville: "BORDEAUX",
-    code: "33063",
-  },
-  {
-    ville: "NICE",
-    code: "06088",
-  },
-];
 
-// function runClock() {
-//   var today = new Date();
-//   hours = today.getHours();
-//   var minutes = today.getMinutes();
-//   var timeValue = hours;
+function runClock() {
+  var today = new Date();
+  hours = today.getHours();
+  var minutes = today.getMinutes();
+  var timeValue = hours;
 
-//   timeValue += (minutes < 10 ? ":0" : ":") + minutes;
-//   document.getElementById("heure").innerHTML = timeValue;
-//   console.log(timeValue);
-// }
+  timeValue += (minutes < 10 ? ":0" : ":") + minutes;
+  document.getElementById("heure").innerHTML = timeValue;
+  console.log(timeValue);
+}
 
 let index = 0;
 let container = document.getElementById("container-ville");
@@ -99,10 +57,8 @@ function changeSlide(sens) {
   return container.appendChild(p);
 }
 
-// runClock();
-// setInterval(runClock, 1000);
-
-let hours = 12;
+runClock();
+setInterval(runClock, 1000);
 
 function mvtSun(x) {
   if (x > 6 && x < 18) {
@@ -164,7 +120,7 @@ function setRain(x) {
     document.getElementById("nuage").style.width = "30vw";
     document.getElementById("dark").style.background = "rgb(15, 8, 60, 0.5)";
     document.getElementById("status").innerHTML = "Pluvieux";
-  }
+  } 
 }
 
 function setSol(hours) {
