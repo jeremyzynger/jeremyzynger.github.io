@@ -1,23 +1,23 @@
 function fetchApi(codeInsee) {
   fetch(api(codeInsee))
-  .then((response) => {
-    if (!response.ok) {
-      throw Error(response.statusText);
-    }
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-    document.getElementById("meteo").innerHTML =
-      Number(data.forecast[0].temp2m) + "°C";
+    .then((response) => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      document.getElementById("meteo").innerHTML =
+        Number(data.forecast[0].temp2m) + "°C";
       setSol(hours);
       setCloud(data.forecast[0].probarain);
       setHeavyCloud(data.forecast[0].probarain);
       setRain(data.forecast[0].probarain);
+      changeToNuit(hours);
     })
     .catch((error) => alert("Erreur : " + error));
 }
-
 
 function runClock() {
   var today = new Date();
@@ -30,15 +30,20 @@ function runClock() {
   console.log(timeValue);
 }
 
+runClock();
+setInterval(runClock, 1000);
+
+// let hours = 1;
+
 let index = 0;
 let container = document.getElementById("container-ville");
 let p = document.createElement("p");
 let img = document.getElementById("d");
-let imgP = document.getElementById("d").parentNode
+let imgP = document.getElementById("d").parentNode;
 p.id = "ville";
 p.innerHTML = tabVille[index].ville;
 container.appendChild(p);
-imgP.insertBefore(p,img)
+imgP.insertBefore(p, img);
 
 fetchApi(tabVille[index].code);
 
@@ -55,11 +60,8 @@ function changeSlide(sens) {
   fetchApi(tabVille[index].code);
   p.innerHTML = tabVille[index].ville;
   container.appendChild(p);
-  imgP.insertBefore(p,img)
+  imgP.insertBefore(p, img);
 }
-
-runClock();
-setInterval(runClock, 1000);
 
 function mvtSun(x) {
   if (x > 6 && x < 18) {
@@ -70,7 +72,6 @@ function mvtSun(x) {
   } else {
     document.getElementById("sun").style.top = "-30%";
     document.getElementById("status").innerHTML = "Nuit paisible";
-
   }
 }
 function mvtMoon(x) {
@@ -90,7 +91,7 @@ setInterval(mvtMoon(hours), 1000);
 
 function changeToNuit(x) {
   if (x < 6 || x > 18) {
-    document.getElementById("jour").style.background = "rgb(135,206,235,1)";
+    document.getElementById("jour").style.background = "rgb(15,8,60,1)";
   } else if (x == 18 || x == 17) {
     document.getElementById("jour").style.background = "rgba(79, 64, 173, 0.8)";
   }
@@ -99,10 +100,10 @@ changeToNuit(hours);
 
 function setCloud(x) {
   if (parseInt(x) >= 10) {
-    document.getElementById("nuage").style.opacity = "1";
+    document.getElementById("nuage").style.opacity = "0.9";
     document.getElementById("status").innerHTML = "Légèrement Nuageux";
-    document.getElementById("jour").style.background = "rgb(148, 157, 225,1)"
-  } 
+    document.getElementById("jour").style.background = "rgb(148, 157, 225,1)";
+  }
 }
 function setHeavyCloud(x) {
   if (parseInt(x) >= 30) {
@@ -112,7 +113,7 @@ function setHeavyCloud(x) {
     document.getElementById("dark").style.background = "rgb(15, 8, 60, 0.4)";
     document.getElementById("nuage").style.width = "30vw";
     document.getElementById("status").innerHTML = " Très Nuageux";
-    document.getElementById("jour").style.background = "rgb(220,219,212)"
+    document.getElementById("jour").style.background = "rgb(220,219,212)";
   }
 }
 
@@ -125,7 +126,7 @@ function setRain(x) {
     document.getElementById("nuage").style.width = "30vw";
     document.getElementById("dark").style.background = "rgb(15, 8, 60, 0.5)";
     document.getElementById("status").innerHTML = "Pluvieux";
-  } 
+  }
 }
 
 function setSol(hours) {
@@ -136,9 +137,9 @@ function setSol(hours) {
   document.getElementById("pluie").style.opacity = "0";
 }
 
-let date = new Date;
-let jour = date.toLocaleDateString('default', { day: 'numeric' });
-let mois = date.toLocaleDateString('default', { month: 'long' });
-let annee = date.toLocaleDateString('default', { year: 'numeric' });
+let date = new Date();
+let jour = date.toLocaleDateString("default", { day: "numeric" });
+let mois = date.toLocaleDateString("default", { month: "long" });
+let annee = date.toLocaleDateString("default", { year: "numeric" });
 
-document.getElementById("date").innerHTML = jour + ' ' + mois + ' ' + annee 
+document.getElementById("date").innerHTML = jour + " " + mois + " " + annee;
