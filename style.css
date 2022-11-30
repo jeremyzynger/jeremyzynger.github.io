@@ -158,19 +158,24 @@
 }
 
 #ville {
+    display: flex;
+    width: 100%;
+    max-width: 150px;
     justify-content: center;
     align-items: center;
-    background: grey;
+    background: rgb(0, 0, 0);
     font-family: 'Fredoka One';
-    color: white;
-
+    color:#ffffff;
+    /* padding: 0.4%; */
+    border-radius: 70px;
+    font-size: 20px;
 }
-
 #heure {
     /* display: flex; */
     align-items: center;
     font-size: 100px;
     padding-right: 2%;
+    margin-top: 10vh;
 }
 
 #meteo {
@@ -198,4 +203,16 @@
 
 #g {
     transform: rotate(-180deg);
+}
+
+.bouton{
+    width: 25px;
+}
+
+#status{
+ 
+    font-size: 50px;
+    padding-left: 5%;
+    color: wheat;
+    margin: top 10vh;;
 }
