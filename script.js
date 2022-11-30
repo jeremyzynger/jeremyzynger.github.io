@@ -66,10 +66,11 @@ function mvtSun(x) {
     a = Math.abs(x - 12) * (60 / 6) + 10;
     document.getElementById("sun").style.top = `${a}%`;
     document.getElementById("status").innerHTML = "Ensoleillé";
-    document.getElementById("jour").style.background = "rgb(135,206,235,1)"
+    document.getElementById("jour").style.background = "rgb(135,206,235,1)";
   } else {
     document.getElementById("sun").style.top = "-30%";
     document.getElementById("status").innerHTML = "Nuit paisible";
+
   }
 }
 function mvtMoon(x) {
@@ -134,3 +135,10 @@ function setSol(hours) {
   document.getElementById("nuage").style.opacity = "0";
   document.getElementById("pluie").style.opacity = "0";
 }
+
+let date = new Date;
+let jour = date.toLocaleDateString('default', { day: 'numeric' });
+let mois = date.toLocaleDateString('default', { month: 'long' });
+let annee = date.toLocaleDateString('default', { year: 'numeric' });
+
+document.getElementById("date").innerHTML = jour + ' ' + mois + ' ' + annee 
