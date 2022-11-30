@@ -37,7 +37,7 @@
     height: 100vh;
     width: 100vw;
     position: fixed;
-    background: rgb(148, 157, 225,1);
+    background: rgb(181, 223, 240);
 }
 
 #sun {
@@ -166,7 +166,6 @@
     background: rgb(0, 0, 0);
     font-family: 'Fredoka One';
     color:#ffffff;
-    /* padding: 0.4%; */
     border-radius: 70px;
     font-size: 20px;
 }
@@ -189,12 +188,15 @@
     padding-top: 22%;
     font-family: 'Poppins';
     justify-content: space-between;
+    margin-top: 15vh;
 }
 
 #container-ville {
     display: flex;
     justify-content: flex-end;
     z-index: 1;
+    margin-top: 4vh;
+    margin-right: 3vh;
 }
 
 .bouton:hover {
