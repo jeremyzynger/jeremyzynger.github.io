@@ -1,28 +1,30 @@
 function fetchApi(codeInsee) {
   fetch(api(codeInsee))
-  .then((response) => {
-    if (!response.ok) {
-      throw Error(response.statusText);
-    }
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-    document.getElementById("meteo").innerHTML = Number(data.forecast[0].temp2m) + "°C";
-    setSol(hours);
-    setCloud(data.forecast[0].probarain);
-    setHeavyCloud(data.forecast[0].probarain);
-    setRain(data.forecast[0].probarain);
-    changeToNuit(hours);
-  })
-  .catch((error) => alert("Erreur : " + error));
+    .then((response) => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      document.getElementById("meteo").innerHTML =
+        Number(data.forecast[0].temp2m) + "°C";
+      setSol(hoursun);
+      setCloud(data.forecast[0].probarain);
+      setHeavyCloud(data.forecast[0].probarain);
+      setRain(data.forecast[0].probarain);
+      changeToNuit(hours);
+    })
+    .catch((error) => alert("Erreur : " + error));
 }
 
 function runClock() {
   var today = new Date();
   hours = today.getHours();
-  var minutes = today.getMinutes();
+  minutes = today.getMinutes();
   var timeValue = hours;
+  hoursun = hours + minutes / 60;
 
   timeValue += (minutes < 10 ? ":0" : ":") + minutes;
   document.getElementById("heure").innerHTML = timeValue;
@@ -31,7 +33,6 @@ function runClock() {
 
 runClock();
 setInterval(runClock, 1000);
-
 
 let index = 0;
 let container = document.getElementById("container-ville");
@@ -84,6 +85,9 @@ function mvtMoon(x) {
   }
 }
 
+setInterval(mvtSun(hoursun), 10000);
+setInterval(mvtMoon(hoursun), 10000);
+
 function changeToNuit(x) {
   if (x < 6 || x > 18) {
     document.getElementById("jour").style.background = "rgb(15,8,60,1)";
@@ -108,7 +112,7 @@ function setHeavyCloud(x) {
     document.getElementById("dark").style.background = "rgb(15, 8, 60, 0.4)";
     document.getElementById("nuage").style.width = "30vw";
     document.getElementById("status").innerHTML = " Très Nuageux";
-    document.getElementById("jour").style.background = "rgb(220,219,212)";
+    document.getElementById("jour").style.background = "#555555";
   }
 }
 
@@ -136,7 +140,7 @@ let date = new Date();
 let jour = date.toLocaleDateString("default", { day: "numeric" });
 let mois = date.toLocaleDateString("default", { month: "long" });
 let annee = date.toLocaleDateString("default", { year: "numeric" });
-if(jour == "1") jour = "1er";
+if (jour == "1") jour = "1er";
 
 document.getElementById("date").innerHTML = jour + " " + mois + " " + annee;
 
