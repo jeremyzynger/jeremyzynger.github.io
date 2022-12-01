@@ -8,6 +8,8 @@ function fetchApi(codeInsee) {
     })
     .then((data) => {
       console.log(data);
+      document.getElementById("textrain").innerHTML =
+        data.forecast[0].probarain + "%";
       document.getElementById("meteo").innerHTML =
         Number(data.forecast[0].temp2m) + "°C";
       setSol(hoursun);
@@ -19,6 +21,10 @@ function fetchApi(codeInsee) {
     .catch((error) => alert("Erreur : " + error));
 }
 
+let hours;
+let minutes;
+let hoursun;
+
 function runClock() {
   var today = new Date();
   hours = today.getHours();
@@ -28,11 +34,14 @@ function runClock() {
 
   timeValue += (minutes < 10 ? ":0" : ":") + minutes;
   document.getElementById("heure").innerHTML = timeValue;
-  console.log(timeValue);
 }
 
 runClock();
 setInterval(runClock, 1000);
+
+// hours = 2;
+// minutes = 45;
+// hoursun = hours + minutes / 60;
 
 let index = 0;
 let container = document.getElementById("container-ville");
@@ -105,7 +114,7 @@ function setCloud(x) {
   }
 }
 function setHeavyCloud(x) {
-  if (parseInt(x) >= 30) {
+  if (parseInt(x) >= 20) {
     document.getElementById("nuage").style.opacity = "1";
     document.getElementById("sun").style.top = "-30%";
     document.getElementById("lune").style.top = "-30%";
@@ -128,9 +137,9 @@ function setRain(x) {
   }
 }
 
-function setSol(hours) {
-  setInterval(mvtSun(hours), 1000);
-  setInterval(mvtMoon(hours), 1000);
+function setSol(hoursun) {
+  setInterval(mvtSun(hoursun), 10000);
+  setInterval(mvtMoon(hoursun), 10000);
   document.getElementById("nuage").style.width = "20vw";
   document.getElementById("nuage").style.opacity = "0";
   document.getElementById("pluie").style.opacity = "0";
@@ -143,6 +152,3 @@ let annee = date.toLocaleDateString("default", { year: "numeric" });
 if (jour == "1") jour = "1er";
 
 document.getElementById("date").innerHTML = jour + " " + mois + " " + annee;
-
-setInterval(mvtSun(hours), 1000);
-setInterval(mvtMoon(hours), 1000);
