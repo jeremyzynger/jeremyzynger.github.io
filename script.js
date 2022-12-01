@@ -1,22 +1,21 @@
 function fetchApi(codeInsee) {
   fetch(api(codeInsee))
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      document.getElementById("meteo").innerHTML =
-        Number(data.forecast[0].temp2m) + "°C";
-      setSol(hours);
-      setCloud(data.forecast[0].probarain);
-      setHeavyCloud(data.forecast[0].probarain);
-      setRain(data.forecast[0].probarain);
-      changeToNuit(hours);
-    })
-    .catch((error) => alert("Erreur : " + error));
+  .then((response) => {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+    document.getElementById("meteo").innerHTML = Number(data.forecast[0].temp2m) + "°C";
+    setSol(hours);
+    setCloud(data.forecast[0].probarain);
+    setHeavyCloud(data.forecast[0].probarain);
+    setRain(data.forecast[0].probarain);
+    changeToNuit(hours);
+  })
+  .catch((error) => alert("Erreur : " + error));
 }
 
 function runClock() {
@@ -33,7 +32,6 @@ function runClock() {
 runClock();
 setInterval(runClock, 1000);
 
-// let hours = 1;
 
 let index = 0;
 let container = document.getElementById("container-ville");
@@ -85,9 +83,6 @@ function mvtMoon(x) {
     document.getElementById("lune").style.top = "-30%";
   }
 }
-
-setInterval(mvtSun(hours), 1000);
-setInterval(mvtMoon(hours), 1000);
 
 function changeToNuit(x) {
   if (x < 6 || x > 18) {
@@ -141,5 +136,9 @@ let date = new Date();
 let jour = date.toLocaleDateString("default", { day: "numeric" });
 let mois = date.toLocaleDateString("default", { month: "long" });
 let annee = date.toLocaleDateString("default", { year: "numeric" });
+if(jour == "1") jour = "1er";
 
 document.getElementById("date").innerHTML = jour + " " + mois + " " + annee;
+
+setInterval(mvtSun(hours), 1000);
+setInterval(mvtMoon(hours), 1000);
