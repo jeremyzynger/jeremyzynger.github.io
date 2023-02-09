@@ -1,7 +1,6 @@
 body{
     overflow: hidden;
     user-select: none;
-    touch-action: none;
 }
 
 * {
@@ -149,14 +148,14 @@ body{
 }
 #heure {
     align-items: center;
-    font-size: 4rem;
+    font-size: 3rem;
     padding-right: 5%;
     margin-top: 10vh;
 }
 
 #meteo {
     padding-left: 5%;
-    font-size: 8rem;
+    font-size: 5rem;
 }
 
 .meteoHeure {
@@ -211,6 +210,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    font-size: 0.2em;
 
 
 }
