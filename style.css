@@ -189,7 +189,7 @@ body{
 }
 
 #status{
-    font-size: 3rem;
+    font-size: 2rem;
     color: wheat;
     text-align: center;
 }
@@ -200,7 +200,7 @@ body{
 }
 
 #date {
-    font-size: 3rem;
+    font-size: 2rem;
     color: wheat;
     padding-right: 5%;
     text-align: center;
