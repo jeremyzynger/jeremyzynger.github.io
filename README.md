@@ -4,7 +4,11 @@ Météo Ada Project
 
 ## Description:
 
-Site méteorologique qui affiche du css en fonction de l'heure et du temps recupérés par une API REST
+Site météorologique qui affiche du css en fonction de l'heure et du temps recupérés par une API REST
+
+## Languages utilisés:
+
+HTML, CSS, JS
 
 ## Lien du site en ligne:
 
