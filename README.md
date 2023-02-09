@@ -12,8 +12,9 @@ https://jeremyzynger.github.io/projet_dataviz-alpha-jeremy-tazkeya/
 
 ## image du jeu:
 
-![screenshot1](https://raw.githubusercontent.com/jeremyzynger/pico8/main/Screenshot%20from%202022-11-03%2015-05-58.png "jeu1")
-![screenshot2](https://raw.githubusercontent.com/jeremyzynger/pico8/main/Screenshot%20from%202022-11-03%2015-02-52.png "jeu2")
-![screenshot3](https://raw.githubusercontent.com/jeremyzynger/pico8/main/Screenshot%20from%202022-11-03%2015-04-58.png "jeu3")
+![screenshot1](https://raw.githubusercontent.com/jeremyzynger/projet_dataviz-alpha-jeremy-tazkeya/master/images/meteo1.png "ss1")
+![screenshot2](https://raw.githubusercontent.com/jeremyzynger/projet_dataviz-alpha-jeremy-tazkeya/master/images/meteo2.png "ss2")
+![screenshot3](https://raw.githubusercontent.com/jeremyzynger/projet_dataviz-alpha-jeremy-tazkeya/master/images/meteo3.png "ss3")
+![screenshot3](https://raw.githubusercontent.com/jeremyzynger/projet_dataviz-alpha-jeremy-tazkeya/master/images/meteo4.png "ss4")
 
-[test](https://raw.githubusercontent.com/jeremyzynger/pico8/main/Screenshot%20from%202022-11-03%2015-05-58.png)
+[rétro](https://raw.githubusercontent.com/jeremyzynger/pico8/main/Screenshot%20from%202022-11-03%2015-05-58.png)
