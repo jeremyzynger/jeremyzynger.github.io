@@ -1,6 +1,7 @@
 body{
     overflow: hidden;
     user-select: none;
+    touch-action: none;
 }
 
 * {
@@ -148,14 +149,14 @@ body{
 }
 #heure {
     align-items: center;
-    font-size: 100px;
+    font-size: 4rem;
     padding-right: 5%;
     margin-top: 10vh;
 }
 
 #meteo {
     padding-left: 5%;
-    font-size: 200px;
+    font-size: 8rem;
 }
 
 .meteoHeure {
@@ -188,10 +189,9 @@ body{
 }
 
 #status{
-    font-size: 50px;
-    padding-left: 5%;
+    font-size: 3rem;
     color: wheat;
-    margin: top 10vh;;
+    text-align: center;
 }
 
 #statusDate {
@@ -200,9 +200,10 @@ body{
 }
 
 #date {
-    font-size: 50px;
+    font-size: 3rem;
     color: wheat;
     padding-right: 5%;
+    text-align: center;
 }
 
 .affichage {
